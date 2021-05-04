@@ -1,0 +1,105 @@
+/* Keegan Verwey */
+/* 19004753 */
+
+/* Stylesheet for index.php, registration.php and dashboard.php */
+.bgd_img {
+    /* (gstatic.com. 2021) */
+    background-image: url('https://www.wallpapertip.com/wmimgs/197-1974048_diving-equipment.jpg');
+    width: 100%;
+    height: auto;
+}
+
+.buttons {
+    background-color: #1d3980;
+    color: white;
+}
+
+.modal_background {
+    background-color: #1d3980;
+    color: white;
+}
+
+.pop_body {
+    background-color: lightgray;
+}
+
+.exit_modal {
+    color: white;
+}
+
+.exit_modal:hover {
+    color: white;
+}
+
+.item_group {
+    float: left;
+	background: #ffffff;
+    margin: 30px 30px 20px 20px;
+}
+
+.item_group:hover {
+    transform: scale(1.1);    
+    overflow: hidden;
+    box-shadow: 0 0 50px rgb(29, 57, 128);
+    position: relative;
+    z-index: 10;
+  }
+
+.item_img {
+    height: 180px;
+    width: 280px;    
+}
+
+.dash_heading {
+    color: white;
+}
+
+.dash_subheading {    
+    color: white;
+}
+
+.dashboard_bgrd {
+    /* (freepik.com. 2021) */
+    background-image: url('https://image.freepik.com/free-photo/close-up-slate-background_23-2148349439.jpg');
+}
+
+.browse_storeImg {
+    width: 100%;
+    height: 400px;
+}
+
+.cart_Img {
+    height: 180px;
+    width: 280px;
+}
+
+.cart_Font {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #1d3980;
+    margin: 5px 0px 0px 5px;
+}
+
+.add_to_cart_btn {
+    margin: 5px 5px 0px 0px;
+}
+
+.add-cart-img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.cart_img_open {
+    height: 180px;
+    width: 280px;
+    border-radius: 50%;
+}
+
+.cart_font_open {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #1d3980;
+    margin-left: 280px;
+}
+
+
+
+  

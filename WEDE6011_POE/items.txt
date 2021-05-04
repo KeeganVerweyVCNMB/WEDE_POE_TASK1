@@ -1,0 +1,15 @@
+SCUBA_images-list/1.jpg,SCUBA-Tank,4999.99,1.00,7999.99
+SCUBA_images-list/2.jpg,Fins,1000.00,1.00,1999.99
+SCUBA_images-list/3.jpg,Mask,400.00,1.00,799.99
+SCUBA_images-list/4.jpg,Mask-Set,599.99,1.00,899.99
+SCUBA_images-list/5.jpg,SCUBA-BCD,5999.99,1.00,12999.99
+SCUBA_images-list/6.jpg,Dive-Watch,4500.00,1.00,7500.00
+SCUBA_images-list/7.jpg,Dive-Boots,400.00,1.00,700.00
+SCUBA_images-list/8.jpg,Dive-Torch,3699.00,1.00,7899.00
+SCUBA_images-list/9.jpg,Rescue-Inflatable,400.00,1.00,800.00
+SCUBA_images-list/10.jpg,Dive-Reel,799.00,1.00,1299.99
+SCUBA_images-list/11.jpg,Weight-Belt,350.00,1.00,780.00
+SCUBA_images-list/12.jpg,Dive-Regulators,4499.99,1.00,7899.89
+SCUBA_images-list/13.jpg,Camera,12999.99,1.00,17899.99
+SCUBA_images-list/14.jpg,Dive-Slate,299.99,1.00,446.99
+SCUBA_images-list/15.jpg,Knife,499.99,1.00,789.00
