@@ -13,10 +13,7 @@ $connectionString= mysqli_connect($servername, $username, $password, $dbName);
 
 
 if (!$connectionString) {
-  die("Connection failed: " . mysqli_connect_error());
-  
-  $result = ("CREATE DATABASE WEDE6011POE_DB");    
-  $res = mysqli_query($connectionString, $result);
+  echo die("Connection failed: " . mysqli_connect_error());
 }
 
 

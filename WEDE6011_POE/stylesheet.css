@@ -101,6 +101,20 @@
     margin-left: 280px;
 }
 
+.parent {
+    display: flex;
+}
 
+.sizingBrowse {
+    height:30px;
+    max-width: 260px;
+    margin-left: auto;
+}
+
+.sizingLogout {
+    max-width: 140px;
+    margin-right: 120px;
+    margin-left: auto;
+}
 
   

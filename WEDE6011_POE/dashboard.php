@@ -53,11 +53,26 @@ $session_UserS = $_SESSION['loggedUserS'];
             }
         </script>
 
-    <div class="form-group row" style="margin-left:25px">
-        <div class = "col-sm-10 mt-3 dash_subheading"><h4><?php echo "WELCOME USER:". " " ."<b>$session_UserN</b>". " " ."<b>$session_UserS</b>"; ?></h4></div>
+        <!-- Browse Store -->
+        <script>
+            function browse_Store(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'none')
+                e.style.display = 'block';
+            else
+                e.style.display = 'none';
+            }
+        </script>
+
+    <div class="form-group col-sm-12 row parent" style="margin-left:25px">
+        <div class = "col-sm-8 mt-3 dash_subheading">
+            <h4><?php echo "WELCOME USER:". " " ."<b>$session_UserN</b>". " " ."<b>$session_UserS</b>"; ?></h4>            
+        </div>
+        <input type = "submit" onclick="browse_Store('shopNow'); test('test');" name = "browse" class = "col-sm-2 mt-3 buttons sizingBrowse" value = "BROWSE/CLOSE STORE">&nbsp;
+       
         <form action="index.php" method="post">
-            <input type = "submit" name = "btnLogOut" class = "col-sm-2 mt-3 buttons" style = "max-width:140px" value = "LOG OUT">
-        </form>
+            <input type = "submit" name = "btnLogOut" class = "col-sm-2 mt-3 buttons sizingLogout" value = "LOG OUT">
+        </form>      
     </div>    
 
     <?php
@@ -65,46 +80,50 @@ $session_UserS = $_SESSION['loggedUserS'];
         //SELECT all from tbl_item
         $dive_listItems = $db_handle->executeSQL("SELECT * FROM tbl_item");
         $randAmount = "R";
-
-        //If DB call not null 
-        if(!empty($dive_listItems))
-        {
-            //For each row in tbl_item devide it into different key values 
-            //and add it into HTML until loop is finished or in other words
-            //until it reaches the end of tbl_item
-            foreach ($dive_listItems as $key => $value) {
-            ?>
-                <div class = "row item_group">
-                    <!-- Item Description being echoed into the URL -->
-                    <form method = "post" action = "dashboard.php?action=desc=<?php echo $dive_listItems[$key]["Description"]; ?>">  
-
-                     <!-- Add to cart button -->
-                    <button class = "add_to_cart_btn float-right" type="submit" name = "btnAddItem">
-                        <!-- (iconfinder.com. 2021) -->
-                       <span aria-hidden="true"><img class = "add-cart-img" src="https://cdn4.iconfinder.com/data/icons/online-shopping-glyph-part-1/33/add_cart-512.png"></span>
-                    </button>
-                    
-                    <?php
-                    //Item Description
-                     $Desc = $dive_listItems[$key]["Description"];
-                     //Item Sell Price
-                     $SellPrc = $dive_listItems[$key]["SellPrice"];
-                    ?>
-                    
-                    <!-- Echo Item Description -->
-                    <div class = "cart_Font"><?php echo "<b>$Desc</b>"; ?></h4></div>
-                      <!-- Echo Sell Price with rand("R") variable -->
-                    <div class = "cart_Font"><?php echo "<u>$randAmount</u>". "" ."<u>$SellPrc</u>"; ?></h4></div>    
-                   
-                    <!-- Item Image -->
-                    <img class = "item_img" src="<?php echo $dive_listItems[$key]["ItemID"]; ?> ">
-
-                    </form>
-                </div>
-                <?php
-            }
-        }
         ?>
+
+        <div id = "shopNow">
+            <?php
+            //If DB call not null 
+            if(!empty($dive_listItems))
+            {
+                //For each row in tbl_item devide it into different key values 
+                //and add it into HTML until loop is finished or in other words
+                //until it reaches the end of tbl_item
+                foreach ($dive_listItems as $key => $value) {
+                ?>
+                    <div class = "row item_group">
+                        <!-- Item Description being echoed into the URL -->
+                        <form method = "post" action = "dashboard.php?action=desc=<?php echo $dive_listItems[$key]["Description"]; ?>">  
+
+                        <!-- Add to cart button -->
+                        <button class = "add_to_cart_btn float-right" type="submit" name = "btnAddItem">
+                            <!-- (iconfinder.com. 2021) -->
+                        <span aria-hidden="true"><img class = "add-cart-img" src="https://cdn4.iconfinder.com/data/icons/online-shopping-glyph-part-1/33/add_cart-512.png"></span>
+                        </button>
+                        
+                        <?php
+                        //Item Description
+                        $Desc = $dive_listItems[$key]["Description"];
+                        //Item Sell Price
+                        $SellPrc = $dive_listItems[$key]["SellPrice"];
+                        ?>
+                        
+                        <!-- Echo Item Description -->
+                        <div class = "cart_Font"><?php echo "<b>$Desc</b>"; ?></h4></div>
+                        <!-- Echo Sell Price with rand("R") variable -->
+                        <div class = "cart_Font"><?php echo "<u>$randAmount</u>". "" ."<u>$SellPrc</u>"; ?></h4></div>    
+                    
+                        <!-- Item Image -->
+                        <img class = "item_img" src="<?php echo $dive_listItems[$key]["ItemID"]; ?> ">
+
+                        </form>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
     </body>
 </html>
 
