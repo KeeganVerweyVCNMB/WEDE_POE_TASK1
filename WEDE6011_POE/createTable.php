@@ -1,6 +1,7 @@
 <?php 
 //Keegan Verwey 
 //19004753
+
 include 'DBConn.php';
 
 //Checking if TABLE tbl_user exists

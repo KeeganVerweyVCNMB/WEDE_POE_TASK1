@@ -1,5 +1,6 @@
 <!-- Keegan Verwey -->
 <!-- 19004753 -->
+
 <?php
 session_start();
 //Establishing DB Connection
