@@ -106,14 +106,14 @@
 }
 
 .sizingBrowse {
-    height:30px;
     max-width: 260px;
     margin-left: auto;
+    height:30px;
 }
 
-.sizingLogout {
-    width: 100px;
+.sizingLogout {    
     max-width: 140px;
+    width: 100px;
     margin-right: 120px;
     margin-left: auto;
 }

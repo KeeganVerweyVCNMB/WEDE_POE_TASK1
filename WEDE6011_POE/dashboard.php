@@ -68,10 +68,10 @@ $session_UserS = $_SESSION['loggedUserS'];
         <div class = "col-sm-8 mt-3 dash_subheading">
             <h4><?php echo "WELCOME USER:". " " ."<b>$session_UserN</b>". " " ."<b>$session_UserS</b>"; ?></h4>            
         </div>
-        <input type = "submit" onclick="browse_Store('shopNow'); test('test');" name = "browse" class = "mt-3 buttons sizingBrowse" value = "BROWSE/CLOSE STORE">&nbsp;
+        <input type = "submit" onclick="browse_Store('shopNow'); test('test');" name = "browse" class ="mt-3 buttons sizingBrowse" value = "BROWSE/CLOSE STORE">&nbsp;
        
         <form action="index.php" method="post">
-            <input type = "submit" name = "btnLogOut" class = "mt-3 buttons sizingLogout" value = "LOG OUT">
+            <input type = "submit" name = "btnLogOut" class ="mt-3 buttons sizingLogout" value = "LOG OUT">
         </form>      
     </div>    
 
