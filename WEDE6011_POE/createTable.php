@@ -13,7 +13,7 @@ if($res !== FALSE)
     $dropTable = ("DROP TABLE tbl_User");    
     $dropRes = mysqli_query($connectionString, $dropTable);   
 
-    $latestTable = ("CREATE TABLE tbl_User(ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    $latestTable = ("CREATE TABLE tbl_User(UserID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     FName TEXT NOT NULL,
     LName TEXT NOT NULL,
     Email TEXT NOT NULL,
@@ -43,7 +43,7 @@ if($res !== FALSE)
 else if($res !== TRUE)
 {
     //Creating TABLE tbl_User
-    $latestTable = ("CREATE TABLE tbl_User(ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    $latestTable = ("CREATE TABLE tbl_User(UserID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     FName TEXT NOT NULL,
     LName TEXT NOT NULL,
     Email TEXT NOT NULL,
@@ -71,17 +71,18 @@ else if($res !== TRUE)
     fclose($open);
 }
 
-//Checking if TABLE tbl_item exists
-$result = ("SELECT * FROM tbl_item");    
+//Checking if TABLE tbl_Item exists
+$result = ("SELECT * FROM tbl_Item");    
        $res = mysqli_query($connectionString, $result);
 
-//If Table tbl_item exists, DROP TABLE and Re-Create, else create the table
+//If Table tbl_Item exists, DROP TABLE and Re-Create, else create the table
 if($res !== FALSE)
 {
-    $dropTable = ("DROP TABLE tbl_item");    
+    $dropTable = ("DROP TABLE tbl_Item");    
     $dropRes = mysqli_query($connectionString, $dropTable);   
 
-    $latestTable = ("CREATE TABLE tbl_item(ItemID VARCHAR(100) NOT NULL,
+    $latestTable = ("CREATE TABLE tbl_Item(ItemID INT PRIMARY KEY NOT NULL,
+    ItemImg TEXT NOT NULL,
     Description TEXT NOT NULL,
     CostPrice DECIMAL(15,2) NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
@@ -98,24 +99,23 @@ if($res !== FALSE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($ItemID, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
+        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
 
-        $qry = "INSERT INTO tbl_item (ItemID, Description, CostPrice, Quantity, SellPrice) 
-        VALUES ('".$ItemID."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice) 
+        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
 
         mysqli_query($connectionString, $qry);
           
     }   
     fclose($open);    
-    $primaryKey = "ALTER TABLE tbl_item ADD PRIMARY KEY (ItemID)";
-    mysqli_query($connectionString, $primaryKey);
     $deleteBlank = "DELETE FROM tbl_item WHERE SellPrice = '0.00'";
     mysqli_query($connectionString, $deleteBlank);
 }
 else if($res !== TRUE)
 {
-    //Creating TABLE tbl_item
-    $latestTable = ("CREATE TABLE tbl_item(ItemID VARCHAR(100) NOT NULL,
+    //Creating TABLE tbl_Item
+    $latestTable = ("CREATE TABLE tbl_Item(ItemID INT PRIMARY KEY NOT NULL,
+    ItemImg TEXT NOT NULL,
     Description TEXT NOT NULL,
     CostPrice DECIMAL(15,2) NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
@@ -132,19 +132,20 @@ else if($res !== TRUE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($ItemID, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
+        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
 
-        $qry = "INSERT INTO tbl_item (ItemID, Description, CostPrice, Quantity, SellPrice) 
-        VALUES ('".$ItemID."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice) 
+        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
 
         mysqli_query($connectionString, $qry);
           
     }   
     fclose($open);    
-    $primaryKey = "ALTER TABLE tbl_item ADD PRIMARY KEY (ItemID)";
-    mysqli_query($connectionString, $primaryKey);
-    $deleteBlank = "DELETE FROM tbl_item WHERE SellPrice = '0.00'";
+    $deleteBlank = "DELETE FROM tbl_Item WHERE SellPrice = '0.00'";
     mysqli_query($connectionString, $deleteBlank);  
 }
+
+//Loading data from loadMyShop.php
+include 'loadMyShop.php';
         
 ?>

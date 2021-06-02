@@ -115,7 +115,7 @@ $session_UserS = $_SESSION['loggedUserS'];
                         <div class = "cart_Font"><?php echo "<u>$randAmount</u>". "" ."<u>$SellPrc</u>"; ?></h4></div>    
                     
                         <!-- Item Image -->
-                        <img class = "item_img" src="<?php echo $dive_listItems[$key]["ItemID"]; ?> ">
+                        <img class = "item_img" src="<?php echo $dive_listItems[$key]["ItemImg"]; ?> ">
 
                         </form>
                     </div>
@@ -147,7 +147,7 @@ $session_UserS = $_SESSION['loggedUserS'];
                 //(PHP, C. and Nunez, S., 2021. Check if URL has certain string with PHP)
                 {    
                     //Adding Database retrieved data into variables            
-                    $ItemID = $dive_listItems[$key]["ItemID"];
+                    $ItemImg = $dive_listItems[$key]["ItemImg"];
                     $Description = $dive_listItems[$key]["Description"];
                     $SellPrice = $dive_listItems[$key]["SellPrice"];   
                     
@@ -176,7 +176,7 @@ $session_UserS = $_SESSION['loggedUserS'];
                     </button>
                 </div>
                 <div class="modal-body pop_body">     
-                    <img class = "cart_img_open" src="<?php echo $ItemID;?> ">    
+                    <img class = "cart_img_open" src="<?php echo $ItemImg;?> ">    
                     <div class = "cart_font_open">
                         <div><?php echo "<b>$Description</b>"; ?></h4></div>
                         <div><?php echo "<u>$randAmount</u>". "" ."<u>$SellPrice</u>"; ?></h4></div>      
