@@ -16,7 +16,7 @@ ob_start();
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     </head>
-
+ 
     <!-- Responsive registration page HTML -->
     <body class = "bgd_img_reg">
         <div class = "body">

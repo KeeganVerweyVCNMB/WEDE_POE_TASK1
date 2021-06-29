@@ -69,7 +69,7 @@ $session_UserID = $_SESSION['loggedUserID'];
     </body>
 </html>
 
-<?php
+<?php 
 
     if (isset($_POST['btnBack']))
     {

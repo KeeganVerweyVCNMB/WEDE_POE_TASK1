@@ -111,7 +111,7 @@ if (isset($_POST['btnLogin']))
     //When all inputs filled
     if(!empty($email) && !empty($password))
     {   
-        //Select users in the Database  
+        //Select users in the Database   
         $dataResult = $db_handle->executeSQL("SELECT * FROM tbl_User WHERE Email = '".$email."'");  
 
         if (!empty($dataResult)) { 

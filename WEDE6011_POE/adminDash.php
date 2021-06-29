@@ -1,5 +1,5 @@
 <!-- Keegan Verwey -->
-<!-- 19004753 -->
+<!-- 19004753 --> 
 <?php
 session_set_cookie_params(3600,"/");
 session_start();

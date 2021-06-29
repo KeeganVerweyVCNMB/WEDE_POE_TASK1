@@ -1,6 +1,6 @@
 <!-- Keegan Verwey -->
 <!-- 19004753 -->
-<?php
+<?php 
 session_start();
 //Establishing DB Connection
 require_once("DBConn.php");

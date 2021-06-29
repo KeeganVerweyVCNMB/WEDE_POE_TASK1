@@ -1,4 +1,4 @@
-<?php
+<?php 
 //Checking if URL action not empty
 if(!empty($_GET["action"])) 
 {

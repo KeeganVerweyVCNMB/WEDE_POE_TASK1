@@ -1,6 +1,6 @@
 <?php
 //Keegan Verwey
-//19004753
+//19004753 
 // Connect to WEDE6011POE_DB (createTable.php Connection)
 $servername = "localhost";         
 $username = "root";

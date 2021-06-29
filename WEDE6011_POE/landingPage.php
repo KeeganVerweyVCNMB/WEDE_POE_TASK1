@@ -1,7 +1,7 @@
 <!-- Keegan Verwey -->
 <!-- 19004753 -->
 <?php
-session_start();
+session_start(); 
 ?>
 <html>
     <head>

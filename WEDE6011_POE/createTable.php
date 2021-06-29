@@ -1,7 +1,7 @@
 <?php 
 //Keegan Verwey 
 //19004753
-include 'DBConn.php';
+include 'DBConn.php'; 
 
 //Checking if TABLE tbl_user exists
 $result = ("SELECT * FROM tbl_User");    

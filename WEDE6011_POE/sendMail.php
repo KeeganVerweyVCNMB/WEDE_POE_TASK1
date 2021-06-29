@@ -1,6 +1,6 @@
 <!-- Keegan Verwey -->
 <!-- 19004753 -->
-<?php
+<?php 
 $dive_listItems = $db_handle->executeSQL("SELECT Quantity FROM tbl_item");
 //If DB call not null 
 //(fahmidasclassroom.com. 2021.)

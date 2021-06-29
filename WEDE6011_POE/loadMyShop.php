@@ -7,7 +7,7 @@ $result = ("SELECT * FROM tbl_Order");
        $res = mysqli_query($connectionString, $result);
 
 //If Table tbl_Order exists, DROP TABLE and Re-Create, else create the table
-if($res !== FALSE)
+if($res !== FALSE) 
 {
     $dropTable = ("DROP TABLE tbl_Order");    
     $dropRes = mysqli_query($connectionString, $dropTable);   
