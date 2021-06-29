@@ -19,32 +19,31 @@ session_start();
     <body class = "bgd_img">
         <div class = "body">
 
-            <form action = "index.php" method = "post">    
-            <h1 class="offset-4 row">Extreme Diving Login</h1>
-                <div class="offset-4 form-group row">
-                    <label class="col-sm-2 col-form-label">Email:</label>
-                    <div class = "col-sm-10">
-                        <!-- Sticky Form -->
-                        <input onkeydown="return event.key != 'Enter';" name = "txtEmail" type = "text" placeholder = "Please enter email"
-                        value="<?php if (isset($_POST['txtEmail'])) echo $_POST['txtEmail']; ?>"/>
-                    </div> 
-                </div>
+            <form action = "index.php" method = "post"> 
+                <div class="row-spacing"></div> 
+                <div class="container">
+                    <h1>EXTREME DIVE SHOP LOGIN</h1>
 
-                <div class="offset-4 form-group row">
-                    <label class="col-sm-2 col-form-label">Password:</label>
-                    <div class = "col-sm-10">
-                        <!-- Sticky Form -->
-                        <input onkeydown="return event.key != 'Enter';" name = "txtPassword" type = "password" placeholder = "Please enter password"
+                    <label for="txtEmail"><b>Email:</b></label>
+                    <!-- Sticky Form -->
+                    <input class="input_fields" name = "txtEmail" type = "text" placeholder = "Please enter email"
+                    value="<?php if (isset($_POST['txtEmail'])) echo $_POST['txtEmail']; ?>"/>
+
+                    <label for="txtPassword"><b>Password:</b></label>
+                    <!-- Sticky Form -->
+                    <input class="input_fields" name = "txtPassword" type = "password" placeholder = "Please enter password"
                         value="<?php if (isset($_POST['txtPassword'])) echo $_POST['txtPassword']; ?>"/>
-                    </div> 
-                </div>
 
-                <div class="offset-5 form-group row">
-                  <div class="col-sm-12">
-                      <input type = "submit" name = "btnLogin" class = "col-sm-2 buttons" value = "LOGIN">
-                      <input type = "submit" name = "btnRegister" class = "col-sm-2 buttons" value = "REGISTER HERE">
-                  </div>
-                </div>  
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <button type="submit" name = "btnLogin" class="btn_login-signup col-sm-3">LOGIN</button>
+                            <button type="submit" name = "btnRegister" class="btn_login-signup col-sm-3" style="margin-left:93px">SIGN UP</button>
+                            <!-- (W3schools.com. 2021.) -->
+                            <button type="submit" name = "btnCancel" class="btn_cancel col-sm-3" style="margin-left:93px">CANCEL</button>
+                        </div>
+                    </div>        
+                    <button type="submit" name = "btnBackToLanding" class="btn_back col-sm-12">BACK TO HOME</button>     
+                </div>
             </form>
         </div>
     </body>
@@ -56,7 +55,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 
 //Establishing DB Connection and Migrating if needed
 if (empty($_SESSION['completed'])){
-    require_once("createTable.php");
+    require_once("createTable.php");    
     $_SESSION['completed'] = TRUE;
  }
  else {
@@ -65,6 +64,20 @@ if (empty($_SESSION['completed'])){
 
 //Calling DBScriptExecution Class
 $db_handle = new DBScriptExecution();
+
+    if (isset($_POST['btnBackToLanding']))
+    {
+        //Routing to login screen
+        header("Location: landingPage.php?");
+        exit;
+    }
+
+    if (isset($_POST['btnCancel']))
+    {
+        //Refresh Page
+        header("Location: index.php?");
+        exit;
+    }
 
 if (isset($_POST['btnRegister']))
 {
@@ -77,15 +90,17 @@ if (isset($_POST['btnLogin']))
 {
     //Passing Logged in Session User
     $passUserMail = $_POST['txtEmail'];
-    $res = $db_handle->executeSQL("SELECT FName, LName FROM tbl_User WHERE Email = '".$passUserMail."'"); 
+    $res = $db_handle->executeSQL("SELECT FName, LName, UserID FROM tbl_User WHERE Email = '".$passUserMail."'"); 
 
     if (!empty($res)) { 
         foreach($res as $key => $value){
         $session_UserN = $res[$key]['FName']; 
-        $session_UserS = $res[$key]['LName'];       
+        $session_UserS = $res[$key]['LName']; 
+        $session_UserID = $res[$key]['UserID'];       
         }
         $_SESSION['loggedUserN'] = $session_UserN;
         $_SESSION['loggedUserS'] = $session_UserS;
+        $_SESSION['loggedUserID'] = $session_UserID;
     }
 
     $email = $_POST['txtEmail'];
@@ -104,13 +119,21 @@ if (isset($_POST['btnLogin']))
             //Setting user email and password
             $dbEmail = $dataResult[$key]['Email'];
             $dbHashed = $dataResult[$key]['Password'];
+            $dbAdmin = $dataResult[$key]['IsAdmin'];
             }
 
             //Comparing User password to DB MD5 Hashed password
-            if(hash_equals($md5Password, trim($dbHashed)))
+            if(hash_equals($md5Password, trim($dbHashed)) && $dbAdmin == "0")
             {
+                unset($_SESSION["myShoppingCart"]);
                 //If succeeds, route to dashboard page
-                header("Location: dashboard.php?");
+                header("Location: myShop.php?");
+                exit;
+            }
+            else if(hash_equals($md5Password, trim($dbHashed)) && $dbAdmin == "1")
+            {
+                //If succeeds, route to admin dashboard page
+                header("Location: adminDash.php?");
                 exit;
             }
             else { 
@@ -146,7 +169,10 @@ if (isset($_POST['btnLogin']))
         });
         </script>';   
     }
-}     
+}       
+
+include_once("sendMail.php");
+
 ?>
 
 <!-- Responsive Bootstrap Modal HTML -->
@@ -162,7 +188,8 @@ if (isset($_POST['btnLogin']))
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><?php echo $modalBody?></p>
+                    <img class="shopping_cart_icon" src="https://www.freeiconspng.com/uploads/orange-error-icon-0.png" alt="Please Sign In" /></a></td>  
+                    <p style="text-align:center"><?php echo $modalBody?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

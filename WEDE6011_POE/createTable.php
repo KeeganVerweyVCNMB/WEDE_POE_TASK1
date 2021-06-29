@@ -17,6 +17,8 @@ if($res !== FALSE)
     FName TEXT NOT NULL,
     LName TEXT NOT NULL,
     Email TEXT NOT NULL,
+    IsAdmin INT NOT NULL,
+    DeliveryAddress TEXT NOT NULL,
     Password TEXT NOT NULL)");    
 
     $resTable = mysqli_query($connectionString, $latestTable);
@@ -30,10 +32,10 @@ if($res !== FALSE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($FName, $LName, $Email, $Password) = $explodeLine;
+        list($FName, $LName, $Email, $IsAdmin, $DelAddres, $Password) = $explodeLine;
         
-        $qry = "INSERT INTO tbl_User (FName, LName, Email, Password) 
-        VALUES ('".$FName."','".$LName."','".$Email."','".$Password."')";
+        $qry = "INSERT INTO tbl_User (FName, LName, Email, IsAdmin, DeliveryAddress,  Password) 
+        VALUES ('".$FName."','".$LName."','".$Email."','".$IsAdmin."','".$DelAddres."','".$Password."')";
 
         mysqli_query($connectionString, $qry);
           
@@ -47,6 +49,8 @@ else if($res !== TRUE)
     FName TEXT NOT NULL,
     LName TEXT NOT NULL,
     Email TEXT NOT NULL,
+    IsAdmin INT NOT NULL,
+    DeliveryAddress TEXT NOT NULL,
     Password TEXT NOT NULL)");    
 
     $resTable = mysqli_query($connectionString, $latestTable);
@@ -60,10 +64,10 @@ else if($res !== TRUE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($FName, $LName, $Email, $Password) = $explodeLine;
+        list($FName, $LName, $Email, $IsAdmin, $DelAddres, $Password) = $explodeLine;
         
-        $qry = "INSERT INTO tbl_User (FName, LName, Email, Password) 
-        VALUES ('".$FName."','".$LName."','".$Email."','".$Password."')";
+        $qry = "INSERT INTO tbl_User (FName, LName, Email, IsAdmin, DeliveryAddress,  Password) 
+        VALUES ('".$FName."','".$LName."','".$Email."','".$IsAdmin."','".$DelAddres."','".$Password."')";
 
         mysqli_query($connectionString, $qry);
           
@@ -86,7 +90,8 @@ if($res !== FALSE)
     Description TEXT NOT NULL,
     CostPrice DECIMAL(15,2) NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
-    SellPrice DECIMAL(15,2) NOT NULL)");    
+    SellPrice DECIMAL(15,2) NOT NULL,
+    IsDeleted INT NOT NULL)");    
 
     $resTable = mysqli_query($connectionString, $latestTable);
 
@@ -99,10 +104,10 @@ if($res !== FALSE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
+        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice, $IsDeleted) = $explodeLine;
 
-        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice) 
-        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice, IsDeleted) 
+        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."','".$IsDeleted."')";
 
         mysqli_query($connectionString, $qry);
           
@@ -119,7 +124,8 @@ else if($res !== TRUE)
     Description TEXT NOT NULL,
     CostPrice DECIMAL(15,2) NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
-    SellPrice DECIMAL(15,2) NOT NULL)");    
+    SellPrice DECIMAL(15,2) NOT NULL,
+    IsDeleted INT NOT NULL)");    
 
     $resTable = mysqli_query($connectionString, $latestTable);
 
@@ -132,10 +138,10 @@ else if($res !== TRUE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice) = $explodeLine;
+        list($ItemID, $ItemImg, $Description, $CostPrice, $Quantity, $SellPrice, $IsDeleted) = $explodeLine;
 
-        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice) 
-        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_Item (ItemID, ItemImg, Description, CostPrice, Quantity, SellPrice, IsDeleted) 
+        VALUES ('".$ItemID."', '".$ItemImg."','".$Description."','".$CostPrice."','".$Quantity."','".$SellPrice."','".$IsDeleted."')";
 
         mysqli_query($connectionString, $qry);
           

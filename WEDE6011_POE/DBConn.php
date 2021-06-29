@@ -38,6 +38,16 @@ class DBScriptExecution {
     function executeInsert($script) {
 		$queryRes = mysqli_query($this->connectionString, $script);
 	}
+
+	//Function for deleting data from the database
+    function executeDelete($script) {
+		$queryRes = mysqli_query($this->connectionString, $script);
+	}
+
+	//Function for editing data from the database
+    function executeUpdate($script) {
+		$queryRes = mysqli_query($this->connectionString, $script);
+	}
 		
 	//Function for selecting data into the database
 	function executeSQL($script) {

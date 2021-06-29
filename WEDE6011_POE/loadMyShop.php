@@ -80,7 +80,8 @@ if($res !== FALSE)
     OrderID INT NOT NULL,
     ItemID INT NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
-    SellPrice DECIMAL(15,2) NOT NULL,    
+    SellPrice DECIMAL(15,2) NOT NULL, 
+    PurchaseDate TEXT NOT NULL,   
     FOREIGN KEY (OrderID) REFERENCES tbl_Order(OrderID),
     FOREIGN KEY (ItemID) REFERENCES tbl_item(ItemID))");        
 
@@ -95,10 +96,10 @@ if($res !== FALSE)
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
         
-        list($OrderItemID, $OrderID, $ItemID, $Quantity, $SellPrice) = $explodeLine;
+        list($OrderItemID, $OrderID, $ItemID, $PurchaseDate, $Quantity, $SellPrice) = $explodeLine;
         
-        $qry = "INSERT INTO tbl_OrderItem (OrderItemID, OrderID, ItemID, Quantity, SellPrice) 
-        VALUES ('".$OrderItemID."','".$OrderID."','".$ItemID."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_OrderItem (OrderItemID, OrderID, ItemID, PurchaseDate, Quantity, SellPrice) 
+        VALUES ('".$OrderItemID."','".$OrderID."','".$ItemID."','".$PurchaseDate."','".$Quantity."','".$SellPrice."')";
 
         mysqli_query($connectionString, $qry);
           
@@ -113,6 +114,7 @@ else if($res !== TRUE)
     ItemID INT NOT NULL,
     Quantity DECIMAL(10,2) NOT NULL,
     SellPrice DECIMAL(15,2) NOT NULL,    
+    PurchaseDate TEXT NOT NULL,  
     FOREIGN KEY (OrderID) REFERENCES tbl_Order(OrderID),
     FOREIGN KEY (ItemID) REFERENCES tbl_item(ItemID))");        
 
@@ -126,11 +128,11 @@ else if($res !== TRUE)
     {
         $getTextLine = fgets($open);
         $explodeLine = explode(",", $getTextLine);
+
+        list($OrderItemID, $OrderID, $ItemID, $PurchaseDate, $Quantity, $SellPrice) = $explodeLine;
         
-        list($OrderItemID, $OrderID, $ItemID, $Quantity, $SellPrice) = $explodeLine;
-        
-        $qry = "INSERT INTO tbl_OrderItem (OrderItemID, OrderID, ItemID, Quantity, SellPrice) 
-        VALUES ('".$OrderItemID."','".$OrderID."','".$ItemID."','".$Quantity."','".$SellPrice."')";
+        $qry = "INSERT INTO tbl_OrderItem (OrderItemID, OrderID, ItemID, PurchaseDate, Quantity, SellPrice) 
+        VALUES ('".$OrderItemID."','".$OrderID."','".$ItemID."','".$PurchaseDate."','".$Quantity."','".$SellPrice."')";
 
         mysqli_query($connectionString, $qry);
           
