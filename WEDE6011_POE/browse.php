@@ -85,7 +85,7 @@ include("aShopCart.php");
 
         <div class="cart_container">
             <label class="txt-heading col-sm-8 mt-3"><b>MY DIVE ITEMS:</b></label>            
-            <a class="btnEmpty" href="browse.php?action=clear-cart">Cancel Order</a>           
+            <a title="Cancel Order" class="btnEmpty" href="browse.php?action=clear-cart">Cancel Order</a>           
         </div>      
 
         <?php
@@ -118,7 +118,7 @@ include("aShopCart.php");
 
                             <td class="system_text_color"><a href="browse.php?action=remove&desc=<?php echo $item["Description"]; ?>" >
                             <!-- (wikimedia.org. 2021.) -->
-                            <img class="btnRemoveAction" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Icons8_flat_delete_generic.svg/723px-Icons8_flat_delete_generic.svg.png" alt="Remove Item" /></a></td>
+                            <img title="Remove Item" class="btnRemoveAction" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Icons8_flat_delete_generic.svg/723px-Icons8_flat_delete_generic.svg.png" alt="Remove Item" /></a></td>
 
                             </tr>
                             <?php
@@ -135,7 +135,7 @@ include("aShopCart.php");
                 
                 <td>
                     <form method = "post" action = "browse.php?action=browse.php">  
-                        <button class = "btnCheckout" type="submit" name = "btnCheckout">Checkout</button>
+                        <button title="Purchase Now" class = "btnCheckout" type="submit" name = "btnCheckout">Checkout</button>
                     </form>
                 </td>  
                                 

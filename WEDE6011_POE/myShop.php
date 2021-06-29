@@ -180,7 +180,7 @@ include("aShopCart.php");
     <h1 class="offset-5 dash_heading">My Shop Cart</h1> 
         <div class="cart_container">
             <label class="txt-heading col-sm-8 mt-3"><b>MY DIVE ITEMS:</b></label>            
-            <a class="btnEmpty" href="myShop.php?action=clear-cart">Cancel Order</a>           
+            <a class="btnEmpty" title="Cancel Order" href="myShop.php?action=clear-cart">Cancel Order</a>           
         </div>      
 
         <?php
@@ -213,7 +213,7 @@ include("aShopCart.php");
 
                             <td class="system_text_color"><a href="myShop.php?action=remove&desc=<?php echo $item["Description"]; ?>" >
                             <!-- (wikimedia.org. 2021.) -->
-                            <img class="btnRemoveAction" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Icons8_flat_delete_generic.svg/723px-Icons8_flat_delete_generic.svg.png" alt="Remove Item" /></a></td>
+                            <img title="Remove Item" class="btnRemoveAction" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Icons8_flat_delete_generic.svg/723px-Icons8_flat_delete_generic.svg.png" alt="Remove Item" /></a></td>
 
                             </tr>
                             <?php
